@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_ClientSide", "Dexma_cpt_ClientSide", "{21AC6D71-A34B-485C-903B-4CEBEA83BB14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_Libraries", "Dexma_cpt_Libraries", "{AB65D420-B8AB-4004-85D8-016C0380D72D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_ServerSide", "Dexma_cpt_ServerSide", "{CF51F9BA-69D2-4FA5-B2B8-CD903B9A17E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_IdentityServer", "Dexma_cpt_IdentityServer", "{11FAF697-19FF-44EC-ACCE-637A4A4473EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_API", "Dexma_cpt_API", "{C0F20042-F86B-4081-8E2A-3806E0AE782D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_MainServer", "Dexma_cpt_MainServer", "{809C22A3-1F65-42E4-A2BE-8D55924AF5F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_EncryptLibrary", "Dexma_cpt_EncryptLibrary", "{312AA53A-B67A-46ED-97AB-D884907C9F36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_DBLibrary", "Dexma_cpt_DBLibrary", "{30D0C472-4AFF-4FE0-8F97-7F78FA1BC62F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dexma_cpt_HelpLibrary", "Dexma_cpt_HelpLibrary", "{F8934125-FA49-46CE-BAD2-FFB2B76C8AD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dexma_cpt_HelpLibrary", "Dexma_cpt_HelpLibrary\Dexma_cpt_HelpLibrary.csproj", "{E354CB6D-C95E-47C0-A88B-481BE37FA61C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dexma_cpt_EncryptLibrary", "Dexma_cpt_EncryptLibrary\Dexma_cpt_EncryptLibrary.csproj", "{DDC72931-55F4-4BD5-B4EE-ABFCD8722B42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dexma_cpt_DBLibrary", "Dexma_cpt_DBLibrary\Dexma_cpt_DBLibrary.csproj", "{182D04FD-0F04-448C-9846-233A0FC242C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E354CB6D-C95E-47C0-A88B-481BE37FA61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E354CB6D-C95E-47C0-A88B-481BE37FA61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E354CB6D-C95E-47C0-A88B-481BE37FA61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E354CB6D-C95E-47C0-A88B-481BE37FA61C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDC72931-55F4-4BD5-B4EE-ABFCD8722B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC72931-55F4-4BD5-B4EE-ABFCD8722B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC72931-55F4-4BD5-B4EE-ABFCD8722B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC72931-55F4-4BD5-B4EE-ABFCD8722B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182D04FD-0F04-448C-9846-233A0FC242C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182D04FD-0F04-448C-9846-233A0FC242C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182D04FD-0F04-448C-9846-233A0FC242C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182D04FD-0F04-448C-9846-233A0FC242C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{11FAF697-19FF-44EC-ACCE-637A4A4473EE} = {CF51F9BA-69D2-4FA5-B2B8-CD903B9A17E6}
+		{C0F20042-F86B-4081-8E2A-3806E0AE782D} = {CF51F9BA-69D2-4FA5-B2B8-CD903B9A17E6}
+		{809C22A3-1F65-42E4-A2BE-8D55924AF5F6} = {CF51F9BA-69D2-4FA5-B2B8-CD903B9A17E6}
+		{312AA53A-B67A-46ED-97AB-D884907C9F36} = {AB65D420-B8AB-4004-85D8-016C0380D72D}
+		{30D0C472-4AFF-4FE0-8F97-7F78FA1BC62F} = {AB65D420-B8AB-4004-85D8-016C0380D72D}
+		{F8934125-FA49-46CE-BAD2-FFB2B76C8AD3} = {AB65D420-B8AB-4004-85D8-016C0380D72D}
+		{E354CB6D-C95E-47C0-A88B-481BE37FA61C} = {F8934125-FA49-46CE-BAD2-FFB2B76C8AD3}
+		{DDC72931-55F4-4BD5-B4EE-ABFCD8722B42} = {312AA53A-B67A-46ED-97AB-D884907C9F36}
+		{182D04FD-0F04-448C-9846-233A0FC242C6} = {30D0C472-4AFF-4FE0-8F97-7F78FA1BC62F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68EB457F-651A-4333-ACF8-E7159DA588E0}
+	EndGlobalSection
+EndGlobal
