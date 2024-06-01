@@ -1,5 +1,4 @@
-﻿using Dexma_cpt_EncryptLibrary.Encrypt;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace Dexma_cpt_CommonModels
 {

@@ -98,27 +98,27 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Chats.ChatsHelp
                     .Select(uk => uk.UserId)
                     .ToList();
 
-                
+
 
                 foreach (var id in userIds)
                 {
-                    var user =  _dbContext.Users.FirstOrDefault(u => u.UserId == id);
+                    var user = _dbContext.Users.FirstOrDefault(u => u.UserId == id);
                     if (user == null) continue;
 
-                    var userKey =  _dbContext.UsersKey.FirstOrDefault(uk => uk.UserId == user.UserId);
+                    var userKey = _dbContext.UsersKey.FirstOrDefault(uk => uk.UserId == user.UserId);
                     if (userKey == null) continue;
 
-                    var userInternalKey =  _dbContext.InternalKeys.FirstOrDefault(ik => ik.UserKeyId == userKey.UserKeyId);
+                    var userInternalKey = _dbContext.InternalKeys.FirstOrDefault(ik => ik.UserKeyId == userKey.UserKeyId);
                     if (userInternalKey == null) continue;
 
-                    var relationTo =  _dbContext.UserRelations
+                    var relationTo = _dbContext.UserRelations
                         .FirstOrDefault(r => r.InternalToId == currentInternalKey.InternalKeyId && r.InternalFromId == userInternalKey.InternalKeyId);
 
-                    var relationFrom =  _dbContext.UserRelations
+                    var relationFrom = _dbContext.UserRelations
                         .FirstOrDefault(r => r.InternalFromId == currentInternalKey.InternalKeyId && r.InternalToId == userInternalKey.InternalKeyId);
 
-                    var relationTypeTo = relationTo != null ?  _dbContext.RelationTypes.FirstOrDefault(rt => rt.RelationTypeId == relationTo.RelationTypeId) : null;
-                    var relationTypeFrom = relationFrom != null ?  _dbContext.RelationTypes.FirstOrDefault(rt => rt.RelationTypeId == relationFrom.RelationTypeId) : null;
+                    var relationTypeTo = relationTo != null ? _dbContext.RelationTypes.FirstOrDefault(rt => rt.RelationTypeId == relationTo.RelationTypeId) : null;
+                    var relationTypeFrom = relationFrom != null ? _dbContext.RelationTypes.FirstOrDefault(rt => rt.RelationTypeId == relationFrom.RelationTypeId) : null;
 
 
 

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dexma_cpt_DBLibrary;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dexma_cpt_DBLibrary
 {

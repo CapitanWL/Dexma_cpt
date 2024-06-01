@@ -45,7 +45,8 @@ namespace Dexma_cpt_ServerSide.Services.Profile.ProfileHelp
         }
 
 
-        public async Task<bool> RemoveProfile(int userId) {
+        public async Task<bool> RemoveProfile(int userId)
+        {
 
             var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserId == userId);
 

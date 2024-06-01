@@ -1,10 +1,10 @@
-﻿using System.Reactive;
-using System.Threading.Tasks;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Dexma_cpt_ClientSide.Services;
 using Dexma_cpt_CommonModels;
 using Dexma_cpt_EncryptLibrary.Encrypt;
 using ReactiveUI;
+using System.Reactive;
+using System.Threading.Tasks;
 
 namespace Dexma_cpt_ClientSide.ViewModels
 {
@@ -85,8 +85,9 @@ namespace Dexma_cpt_ClientSide.ViewModels
 
         #endregion
 
-        public AutorizationViewModel() {
-        
+        public AutorizationViewModel()
+        {
+
         }
 
         public AutorizationViewModel(MainWindowViewModel mainWindowViewModel,

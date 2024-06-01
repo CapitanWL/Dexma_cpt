@@ -1,7 +1,6 @@
 ﻿using Dexma_cpt_EncryptLibrary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Text;
 
 namespace Dexma_cpt_DBLibrary
 {
@@ -34,7 +33,7 @@ namespace Dexma_cpt_DBLibrary
 
         //public DexmaDbContext()
         //{
-       // }
+        // }
 
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Message> Messages { get; set; } = null!;
@@ -135,7 +134,7 @@ namespace Dexma_cpt_DBLibrary
 
             byte[] saltBytes = BaseGenerator.SaltGenerator();
 
-            UserKey newUserKey = new (Pbkdf.PbkdfCreate(password, saltBytes),
+            UserKey newUserKey = new(Pbkdf.PbkdfCreate(password, saltBytes),
                 saltBytes, searchUser.UserId);
 
             await UsersKey.AddAsync(newUserKey);

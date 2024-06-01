@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using Dexma_cpt_ClientSide.Services;
-using Dexma_cpt_EncryptLibrary;
 using Dexma_cpt_EncryptLibrary.Encrypt;
 using ReactiveUI;
 
@@ -23,7 +22,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
         {
             _chatService = chatService;
             _rSAEncryption = rSAEncryption;
-            
+
             InitializeAsync(mainWindow);
         }
 

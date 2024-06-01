@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
-using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Dexma_cpt_EncryptLibrary.Encrypt
 {

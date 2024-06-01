@@ -48,7 +48,7 @@ namespace Dexma_cpt_ServerSide.Services.Auth
             UserKey newUserKey = await _authHelp.AddUserKey(newUser, model.Password);
             InternalKey newInternalKey = await _authHelp.AddInternalKey(newUserKey);
             await _authHelp.AddStorage(newInternalKey);
-            
+
             ApplicationProfileModel profileModel = _authHelp.GetUser(newUser);
 
             return new AuthorizationOrRegistrationResult

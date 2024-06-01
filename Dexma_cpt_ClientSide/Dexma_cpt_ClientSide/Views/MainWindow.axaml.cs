@@ -1,6 +1,4 @@
 using Avalonia.Controls;
-using Dexma_cpt_ClientSide.ViewModels;
-using System;
 
 namespace Dexma_cpt_ClientSide.Views
 {
@@ -9,7 +7,7 @@ namespace Dexma_cpt_ClientSide.Views
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
     }
 }

@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dexma_cpt_DBLibrary
 {
     public class UserRelation
     {
         [Key]
-        
+
         public int UserRelationId { get; set; }
         public int? InternalToId { get; set; }
         public int? InternalFromId { get; set; }

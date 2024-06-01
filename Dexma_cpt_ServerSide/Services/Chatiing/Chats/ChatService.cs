@@ -1,10 +1,6 @@
 ﻿using Dexma_cpt_CommonModels;
-using Dexma_cpt_EncryptLibrary.Encrypt;
-using Dexma_cpt_ServerSide.Encryption;
 using Dexma_cpt_ServerSide.Services.Chatiing.Chats.ChatsHelp;
 using Dexma_cpt_ServerSide.Services.Chatiing.Messages.MessagesHelp;
-using System.Collections.Concurrent;
-using System.Numerics;
 
 namespace Dexma_cpt_ServerSide.Services.Chatiing.Chats
 {
@@ -28,7 +24,7 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Chats
             {
                 int uid = _userManager.GetUserId(initial.Token);
                 var collection = _chatsHelp.GetChatsAsync(uid);
-                
+
                 return new ChatsResult()
                 {
                     Chats = collection == null ? null : collection,

@@ -1,24 +1,16 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Markup.Xaml;
-using Dexma_cpt_ClientSide.ViewModels;
 using Dexma_cpt_CommonModels;
-using Avalonia.VisualTree;
-using ReactiveUI;
-using Avalonia.LogicalTree;
-using Avalonia.Threading;
-using System;
 
 namespace Dexma_cpt_ClientSide.Views;
 
 public partial class HomeView : UserControl
 {
-    
+
     public HomeView()
     {
         InitializeComponent();
-        
+
     }
 
     private void StackPanel_PointerPressed(object sender, PointerPressedEventArgs e)
@@ -29,7 +21,7 @@ public partial class HomeView : UserControl
             {
                 if (selectedMessage.MessageFrom == App.User.Username)
                 {
-                    
+
                     var contextMenu = stackPanel.ContextMenu as ContextMenu;
                     contextMenu.DataContext = this.DataContext;
                     contextMenu.IsEnabled = true;
@@ -62,6 +54,6 @@ public partial class HomeView : UserControl
 
     */
 
-    
+
 
 }

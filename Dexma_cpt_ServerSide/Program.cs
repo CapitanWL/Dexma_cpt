@@ -1,8 +1,5 @@
 using Dexma_cpt_DBLibrary;
 using Dexma_cpt_ServerSide.Hubs;
-using Dexma_cpt_ServerSide.Services.Auth.AuthHelp;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

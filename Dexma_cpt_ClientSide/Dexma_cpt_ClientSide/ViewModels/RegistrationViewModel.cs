@@ -77,7 +77,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
                 return false;
             }
 
-            string phoneNumber = new (Phone.Where(char.IsDigit).ToArray());
+            string phoneNumber = new(Phone.Where(char.IsDigit).ToArray());
 
             if (UserName.Length < 7)
             {
@@ -115,7 +115,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
                 return false;
             }
 
-            
+
 
             RegisterModel registerModel = new()
             {
@@ -151,7 +151,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
 
         #endregion
 
-         public RegistrationViewModel() {}
+        public RegistrationViewModel() { }
 
         public RegistrationViewModel(MainWindowViewModel mainWindowViewModel,
             Window ownerWindow, IChatService chatSvc, RSAEncryption rSAEncryption)
@@ -162,7 +162,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
             _rSAEncryption = rSAEncryption;
 
             chatService = chatSvc;
-           
+
 
             GoToAuthorization = ReactiveCommand.Create(() =>
             {
@@ -170,7 +170,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
                     chatService, _rSAEncryption);
             });
 
-            RegistrationCommand = ReactiveCommand.CreateFromTask( async () =>
+            RegistrationCommand = ReactiveCommand.CreateFromTask(async () =>
             {
                 await Register();
             });

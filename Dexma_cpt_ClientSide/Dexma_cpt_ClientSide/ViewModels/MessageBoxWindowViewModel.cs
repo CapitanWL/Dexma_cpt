@@ -33,7 +33,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
 
         #region base fields
 
-        private string _oldMessageText {  get; set; }
+        private string _oldMessageText { get; set; }
 
         private string? _messageText;
         public string? MessageText
@@ -124,10 +124,10 @@ namespace Dexma_cpt_ClientSide.ViewModels
                         UsernameTo = UsernameTo,
                         OldMessage = oldMessageStringList,
                     };
-chatService.OnMessageEdited(Message.DecryptMessageModelId, _messageText);
+                    chatService.OnMessageEdited(Message.DecryptMessageModelId, _messageText);
                     var result = await chatService.EditMessageInChatAsync(messageModel);
 
-                    
+
                 }
             }
             catch (Exception ex)

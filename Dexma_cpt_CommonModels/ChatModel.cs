@@ -6,9 +6,9 @@
         public string Username { get; set; }
         public string Nickname { get; set; }
         public string? Phone { get; set; }
-        public string StatusFrom { get; set;}
-        public string StatusTo { get; set;}
-        public bool AccountStatus { get; set;}
+        public string StatusFrom { get; set; }
+        public string StatusTo { get; set; }
+        public bool AccountStatus { get; set; }
         public ChatModel() { }
     }
 }

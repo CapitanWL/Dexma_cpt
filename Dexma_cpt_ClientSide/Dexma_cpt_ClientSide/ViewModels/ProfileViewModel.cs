@@ -153,7 +153,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
 
         private async Task RemoveProfile()
         {
-          var result = await chatService.RemoveProfile("");
+            var result = await chatService.RemoveProfile("");
 
             if (result == "OK")
             {

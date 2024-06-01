@@ -159,7 +159,7 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Messages.MessagesHelp
             return (searchMessage, currentInternalKey, recepientInternalKey);
         }
 
-        public async Task<(bool,Message, InternalKey, InternalKey, ChatModel)> SendMessage(SendMessageModel messageModel, int userId)
+        public async Task<(bool, Message, InternalKey, InternalKey, ChatModel)> SendMessage(SendMessageModel messageModel, int userId)
         {
             bool addNewChat = false;
 
@@ -255,18 +255,18 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Messages.MessagesHelp
             try
             {
                 var currentUser = await GetUsernameAsync(userId);
-            var currentKey = await GetUserKey(userId);
-            var currentInternalKey = await GetUserInternalKey(currentKey.UserKeyId);
+                var currentKey = await GetUserKey(userId);
+                var currentInternalKey = await GetUserInternalKey(currentKey.UserKeyId);
 
-            var chatUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Username == chatUsername);
+                var chatUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Username == chatUsername);
 
-            var chatKey = await GetUserKey(chatUser.UserId);
-            var chatInternalKey = await GetUserInternalKey(chatKey.UserKeyId);
+                var chatKey = await GetUserKey(chatUser.UserId);
+                var chatInternalKey = await GetUserInternalKey(chatKey.UserKeyId);
 
-            if (currentInternalKey == null || chatInternalKey == null)
-            {
-                throw new Exception();
-            }
+                if (currentInternalKey == null || chatInternalKey == null)
+                {
+                    throw new Exception();
+                }
 
                 if (currentInternalKey == null || chatInternalKey == null)
                 {
@@ -313,7 +313,7 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Messages.MessagesHelp
                             MessageFrom = await GetMessageFromUser(message, currentInternalKey.InternalKeyId, userId, chatUsername),
                             MessageModelId = message.MessageId,
                             IsEdited = message.IsEdited == true ? "edited" : string.Empty
-                            
+
                         };
 
                         chatMessages.Add(messageModel);

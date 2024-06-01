@@ -7,7 +7,6 @@ using Dexma_cpt_ClientSide.Storages;
 using Dexma_cpt_ClientSide.ViewModels;
 using Dexma_cpt_ClientSide.Views;
 using Dexma_cpt_CommonModels;
-using Dexma_cpt_EncryptLibrary;
 using Dexma_cpt_EncryptLibrary.Encrypt;
 
 namespace Dexma_cpt_ClientSide

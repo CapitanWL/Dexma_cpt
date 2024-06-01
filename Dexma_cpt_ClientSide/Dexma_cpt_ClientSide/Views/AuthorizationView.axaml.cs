@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using Dexma_cpt_ClientSide.ViewModels;
 
 namespace Dexma_cpt_ClientSide.Views
 {

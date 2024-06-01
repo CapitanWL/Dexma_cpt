@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace Dexma_cpt_CommonModels
+﻿namespace Dexma_cpt_CommonModels
 {
     public class MessageModel
     {

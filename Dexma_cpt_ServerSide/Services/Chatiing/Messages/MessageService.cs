@@ -4,8 +4,6 @@ using Dexma_cpt_EncryptLibrary;
 using Dexma_cpt_EncryptLibrary.Encrypt;
 using Dexma_cpt_ServerSide.Encryption;
 using Dexma_cpt_ServerSide.Services.Chatiing.Messages.MessagesHelp;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Dexma_cpt_ServerSide.Services.Chatiing.Messages
 {
@@ -26,7 +24,8 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Messages
             _aESEncryption = aESEncryption;
         }
 
-        public async Task<(string, bool, Message, InternalKey, InternalKey, int, ChatModel)> SendNewMessage(SendMessageModel messageModel) {
+        public async Task<(string, bool, Message, InternalKey, InternalKey, int, ChatModel)> SendNewMessage(SendMessageModel messageModel)
+        {
 
             if (_userManager.ValidateToken(messageModel.Token))
             {
@@ -40,7 +39,8 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Messages
             return (null, false, null, null, null, 0, null);
         }
 
-        public async Task<(string, int)> RemoveMessage(SendMessageModel messageModel) {
+        public async Task<(string, int)> RemoveMessage(SendMessageModel messageModel)
+        {
 
             if (_userManager.ValidateToken(messageModel.Token))
             {
@@ -52,7 +52,8 @@ namespace Dexma_cpt_ServerSide.Services.Chatiing.Messages
             return (null, 0);
         }
 
-        public async Task<(string, Message, InternalKey, InternalKey, int)> EditMessage(SendMessageModel messageModel) {
+        public async Task<(string, Message, InternalKey, InternalKey, int)> EditMessage(SendMessageModel messageModel)
+        {
 
             if (_userManager.ValidateToken(messageModel.Token))
             {

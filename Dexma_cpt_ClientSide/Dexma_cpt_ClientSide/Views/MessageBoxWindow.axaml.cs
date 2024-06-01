@@ -16,7 +16,7 @@ public partial class MessageBoxWindow : Window
         InitializeComponent();
     }
 
-        private void CloseWindow(object sender, RoutedEventArgs e)
+    private void CloseWindow(object sender, RoutedEventArgs e)
     {
         this.Close();
     }

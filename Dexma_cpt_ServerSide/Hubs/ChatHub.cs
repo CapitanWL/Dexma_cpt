@@ -69,7 +69,7 @@ namespace Dexma_cpt_ServerSide.Hubs
             _dbContext = dbContext;
             _jwtManager = new();
             _userManager = new();
-            
+
 
             RSAEncryption rSAEncryption = new();
             AESEncryption aESEncryption = new();

@@ -46,7 +46,7 @@ namespace Dexma_cpt_ClientSide.ViewModels
         {
             if (string.IsNullOrWhiteSpace(SearchUsername))
             {
-              InitializeChats();
+                InitializeChats();
             }
             else
             {
@@ -73,11 +73,11 @@ namespace Dexma_cpt_ClientSide.ViewModels
 
             InitializeChats();
 
-            if (History !=  null)
+            if (History != null)
             {
-History.Clear();
+                History.Clear();
             }
-            
+
         }
 
         #endregion
@@ -105,11 +105,12 @@ History.Clear();
         public DecryptMessageModel? Message
         {
             get => _message;
-            set {
+            set
+            {
                 this.RaiseAndSetIfChanged(ref _message, value);
 
-                    
-                    }
+
+            }
         }
 
         private string _chattingText;
@@ -163,7 +164,7 @@ History.Clear();
         #region constructors
         public HomeViewModel() { }
 
-        
+
         public HomeViewModel(MainWindowViewModel mainWindowViewModel, Window ownerWindow, IChatService chatSvc, RSAEncryption rSAEncryption)
         {
 
@@ -185,7 +186,7 @@ History.Clear();
                 profileWindow.ShowDialog(_ownerWindow);
             });
 
-            
+
 
             RemoveMessageCommand = ReactiveCommand.Create(() =>
             {
@@ -314,7 +315,7 @@ History.Clear();
                 {
                     if (!Chats.Contains(chat))
                     {
-                         Chats.Add(chat);
+                        Chats.Add(chat);
                     }
                 }
             }
@@ -384,8 +385,8 @@ History.Clear();
 
         public void ReceiveSelectedChat(ChatModel selectedChat)
         {
-            if (SelectedChat != null && 
-                (SelectedChat.Nickname != App.User.Nickname 
+            if (SelectedChat != null &&
+                (SelectedChat.Nickname != App.User.Nickname
                 || SelectedChat.Username != App.User.Username))
             {
                 ChatModelHickname = SelectedChat.Nickname;
@@ -431,7 +432,8 @@ History.Clear();
         private async Task SendMessage()
         {
             if (!string.IsNullOrWhiteSpace(ChatMessage) && SelectedChat != null &&
-    (SelectedChat.Nickname != App.User.Nickname || SelectedChat.Username != App.User.Username)) { 
+    (SelectedChat.Nickname != App.User.Nickname || SelectedChat.Username != App.User.Username))
+            {
                 if (SelectedChat.AccountStatus == true)
                 {
 
@@ -477,11 +479,11 @@ History.Clear();
                 }
                 else
                 {
-FeedBackWindow feedBackWindow = new("Send error! User account has been deleted.");
-                feedBackWindow.ShowDialog(_ownerWindow);
-                ChatMessage = null;
+                    FeedBackWindow feedBackWindow = new("Send error! User account has been deleted.");
+                    feedBackWindow.ShowDialog(_ownerWindow);
+                    ChatMessage = null;
                 }
-                
+
             }
             else
             {
@@ -491,7 +493,7 @@ FeedBackWindow feedBackWindow = new("Send error! User account has been deleted."
 
         private void NewTextMessage(MessageModel messageModel, string sender)
         {
-            if (SelectedChat != null 
+            if (SelectedChat != null
                 && (SelectedChat.Username == sender))
             {
                 var privateKey = keyHelper.GetClientPrivateKeyWihoutAsync(App.User.Username);

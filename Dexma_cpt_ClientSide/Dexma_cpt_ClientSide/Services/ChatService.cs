@@ -5,8 +5,8 @@ using Dexma_cpt_EncryptLibrary.Encrypt;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Net;
-using System.Threading.Tasks;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace Dexma_cpt_ClientSide.Services
 {
@@ -31,7 +31,7 @@ namespace Dexma_cpt_ClientSide.Services
 
         public ChatService(StorageManager storage, RSAEncryption rSAEncryption, ClientKeyHelper clientKeyHelper)
         {
-            _storage = storage; 
+            _storage = storage;
             _rSAEncryption = rSAEncryption;
             _clientKeyHelper = clientKeyHelper;
         }
@@ -56,12 +56,12 @@ namespace Dexma_cpt_ClientSide.Services
         {
             if (connection != null)
             {
-                    var result = await connection.InvokeAsync<AuthorizationOrRegistrationResult>(methodName, model);
+                var result = await connection.InvokeAsync<AuthorizationOrRegistrationResult>(methodName, model);
 
-                    if (result != null)
-                    {
-                        var message = result.StringResult;
-                        var resultmodel = result.ProfileModel;
+                if (result != null)
+                {
+                    var message = result.StringResult;
+                    var resultmodel = result.ProfileModel;
 
                     if (resultmodel != null && result.StringResult == null)
                     {
@@ -76,7 +76,8 @@ namespace Dexma_cpt_ClientSide.Services
                             Q = result.Q,
                         };
                     }
-                    else {
+                    else
+                    {
 
                         return new AuthorizationOrRegistrationResult
                         {
@@ -88,7 +89,7 @@ namespace Dexma_cpt_ClientSide.Services
                         };
 
                     }
-                    }
+                }
             }
 
             return null;
@@ -210,7 +211,7 @@ namespace Dexma_cpt_ClientSide.Services
             {
                 string token = _storage.ReadFromFile(App.User.Username);
                 messageModel.Token = token;
-                
+
                 await connection.InvokeAsync<OperationOnMessageResult>("DeleteTextMessage", messageModel);
             }
         }
@@ -226,7 +227,7 @@ namespace Dexma_cpt_ClientSide.Services
             {
                 string token = _storage.ReadFromFile(App.User.Username);
                 messageModel.Token = token;
-               var result = await connection.InvokeAsync<int>("EditTextMessage", messageModel);
+                var result = await connection.InvokeAsync<int>("EditTextMessage", messageModel);
                 return result;
             }
             return 0;

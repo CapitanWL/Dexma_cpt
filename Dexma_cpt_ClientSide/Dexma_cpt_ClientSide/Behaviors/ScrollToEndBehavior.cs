@@ -1,17 +1,13 @@
-﻿using System;
-using System.Linq;
-using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
-using Avalonia.Controls.Templates;
-using Avalonia.VisualTree;
 using Avalonia.Xaml.Interactivity;
+using System;
 
 namespace Dexma_cpt_ClientSide.Behaviors
 {
     public class ScrollToEndBehavior : Behavior<ListBox>
     {
-        
+
         private bool _shouldScrollToEnd = true;
         private bool _scrolling;
 
@@ -31,7 +27,7 @@ namespace Dexma_cpt_ClientSide.Behaviors
             var sw = e.NameScope.Get<ScrollViewer>("PART_ScrollViewer");
             sw.ScrollChanged += SwOnScrollChanged;
 
-            
+
             AssociatedObject.ScrollIntoView(AssociatedObject.Items.Count - 1);
         }
 
@@ -52,6 +48,6 @@ namespace Dexma_cpt_ClientSide.Behaviors
                 _scrolling = false;
             }
         }
-        
+
     }
 }

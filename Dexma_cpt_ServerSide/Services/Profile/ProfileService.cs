@@ -1,18 +1,15 @@
 ﻿using Dexma_cpt_CommonModels;
 using Dexma_cpt_DBLibrary;
 using Dexma_cpt_EncryptLibrary;
-using Dexma_cpt_ServerSide.Services.Auth.AuthHelp;
 using Dexma_cpt_ServerSide.Services.Profile.ProfileHelp;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
 using System.Text;
 
 namespace Dexma_cpt_ServerSide.Services.Profile
 {
     public class ProfileService
     {
-        
+
         private readonly DexmaDbContext _dbContext;
         private readonly ProfileHelpModel _profileHelp;
         private readonly UserManager _userManager;
@@ -76,7 +73,7 @@ namespace Dexma_cpt_ServerSide.Services.Profile
             {
                 int uid = _userManager.GetUserId(token);
 
-               await _profileHelp.RemoveProfile(uid);
+                await _profileHelp.RemoveProfile(uid);
 
                 return "OK";
             }

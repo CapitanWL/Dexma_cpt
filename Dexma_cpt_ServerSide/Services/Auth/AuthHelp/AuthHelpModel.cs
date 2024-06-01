@@ -25,8 +25,8 @@ namespace Dexma_cpt_ServerSide.Services.Auth.AuthHelp
                 AccountStatus = true
             };
 
-           _dbContext.Users.Add(newUser);
-           await _dbContext.SaveChangesAsync();
+            _dbContext.Users.Add(newUser);
+            await _dbContext.SaveChangesAsync();
 
             return newUser;
         }
