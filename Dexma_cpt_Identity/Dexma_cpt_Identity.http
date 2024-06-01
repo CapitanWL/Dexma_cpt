@@ -1,6 +1,0 @@
-@Dexma_cpt_Identity_HostAddress = http://localhost:5115
-
-GET {{Dexma_cpt_Identity_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
