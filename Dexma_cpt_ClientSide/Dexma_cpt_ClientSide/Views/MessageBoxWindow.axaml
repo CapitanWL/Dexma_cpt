@@ -1,0 +1,70 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="350" Height="170"
+        x:Class="Dexma_cpt_ClientSide.MessageBoxWindow"
+		 xmlns:vm="clr-namespace:Dexma_cpt_ClientSide.ViewModels"
+			 x:DataType="vm:MessageBoxWindowViewModel"
+		TransparencyBackgroundFallback="Transparent"
+		Background="Transparent"
+        Title="MessageBoxWindow" WindowStartupLocation="CenterOwner" SystemDecorations="None">
+
+	<Border BorderBrush="#020278" BorderThickness="3" Background="White" CornerRadius="15">
+		
+		<StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+
+			<Button
+											Content="✘"
+														Width="40"
+														Height="30"
+											CornerRadius="20"
+											Margin="0,5,5,0"
+											FontWeight="Bold"
+											FontSize="14"
+											Background="#020278"
+											BorderBrush="DodgerBlue"
+											BorderThickness="2"
+											Foreground="#F0F8FF"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Center"
+										HorizontalContentAlignment="Center"
+										Cursor="Hand"
+						Click="CloseWindow"
+									/>
+			<StackPanel HorizontalAlignment="Center" Margin="0,20,15,10">
+				<TextBlock x:Name="MessageText" HorizontalAlignment="Center"
+						   VerticalAlignment="Stretch"
+						   FontFamily="Monserrat"
+						   FontWeight="DemiBold"
+						   Foreground="Red"
+						   TextWrapping="Wrap"
+						   Text="Are you sure you want to delete your message in this chat?"
+						   Margin="0"/>
+			</StackPanel>
+			
+			<StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" Orientation="Horizontal">
+				
+				<Button
+											Content="Ok"
+											Width="70"
+											Height="30"
+											CornerRadius="20"
+											Margin="0,0,0,0"
+											FontWeight="Bold"
+											FontSize="14"
+											Background="#020278"
+											BorderBrush="DodgerBlue"
+											BorderThickness="2"
+											Foreground="#F0F8FF"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Center"
+										HorizontalContentAlignment="Center"
+										Cursor="Hand"
+						Command="{Binding DeleteMessageCommand}"
+									/>
+			</StackPanel>
+	</StackPanel>
+	</Border>
+	
+</Window>

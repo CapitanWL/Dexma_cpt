@@ -1,0 +1,260 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Width="1285"
+			 xmlns:views="clr-namespace:Dexma_cpt_ClientSide.Views"
+             x:Class="Dexma_cpt_ClientSide.Views.HomeView"
+			 xmlns:vm="clr-namespace:Dexma_cpt_ClientSide.ViewModels"
+			 xmlns:behaviors="clr-namespace:Dexma_cpt_ClientSide.Behaviors"
+			 x:DataType="vm:HomeViewModel"
+			 
+			 >
+
+	<UserControl.Resources>
+		<vm:HomeViewModel x:Key="HomeViewModelInstance"/>
+		<ContextMenu x:Key="ContextMessageMenu" Name="MessageContextMenuName"
+                     BorderBrush="DodgerBlue" BorderThickness="3" Foreground="#02016E"
+                     CornerRadius="15" FontFamily="Montserrat" Width="130" Height="88"
+                     Margin="0" Padding="0">
+			<MenuItem Foreground="#02016E" Header="✎ Edit" FontSize="18"
+                      Command="{Binding Path=EditMessageCommand}">
+			</MenuItem>
+
+			<MenuItem BorderBrush="DodgerBlue" BorderThickness="0,3,0,0"
+                      Foreground="#02016E" Header="✘ Delete" FontSize="18"
+				  Command="{Binding Path=RemoveMessageCommand}">
+			</MenuItem>
+		</ContextMenu>
+	</UserControl.Resources>
+
+	<Border CornerRadius="0" Name="MainBorder">
+
+		<Border.Styles>
+			<Style Selector="Border#MainBorder">
+				<Setter Property="Background">
+					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+
+						<GradientStop Offset="0" Color="#020150"/>
+						<GradientStop Offset="0.3" Color="#020131"/>
+						<GradientStop Offset="0.5" Color="#02021E"/>
+						<GradientStop Offset="0.7" Color="#020131"/>
+						<GradientStop Offset="1" Color="#020150"/>
+				
+					</LinearGradientBrush>
+				</Setter>
+			</Style>
+		</Border.Styles>
+		
+		<Grid>
+			
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="290" />
+				<ColumnDefinition Width="995" />
+			</Grid.ColumnDefinitions>
+
+			<Border Grid.ColumnSpan="2"
+                    VerticalAlignment="Top"
+                    Grid.Row="0"
+                    Margin="0"
+                    Background="DodgerBlue"
+                    Height="65">
+
+				<Grid>
+
+				<Grid>
+					<TextBlock Text="Dexma"
+							   FontFamily="Montserrat"
+                               HorizontalAlignment="Left"
+                               Margin="20,10"
+                               VerticalAlignment="Center"
+                               Foreground="GhostWhite"
+                               FontSize="22"
+                               FontWeight="Bold"
+							   />
+				</Grid>
+
+				<Grid Background="Transparent" HorizontalAlignment="Right">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+
+					<Button CornerRadius="45"
+                            Grid.Column="1"
+                            Name="EllipseOuterButton"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+							Background="Transparent"
+							Margin="10,0"
+						    Command="{Binding GoToProfileDialog}"
+                           >
+
+						<Ellipse
+                            Name="EllipseOuter"
+                            Stretch="Uniform"
+                            Width="40"
+                            Height="40"
+                            StrokeThickness="1"
+                            Stroke="#F0F8FF"
+                            StrokeDashArray="5"
+                            StrokeLineCap="Round"/>
+
+					</Button>
+
+
+					<Ellipse Grid.Column="1"
+                             Name="EllipseInner"
+                             Width="50"
+                             Height="50"
+                             StrokeThickness="3"
+                             Stroke="#020278"
+                             Stretch="Uniform"/>
+
+					<TextBlock Foreground="#020278" FontSize="26" FontWeight="ExtraBold"
+                               Grid.Row="0" Grid.Column="1"
+                               VerticalAlignment="Center" HorizontalAlignment="Center"
+                               />
+
+				</Grid>
+					</Grid>
+				</Border>
+
+			<Grid Grid.Column="0" Grid.Row="0"
+				  Margin="0,67,0,0"
+                  MinWidth="290" Width="290">
+				<views:SearchView/>
+			</Grid>
+
+			<Grid Background="Transparent" HorizontalAlignment="Right"
+				  Grid.Column="1" Grid.RowSpan="1"
+				  Margin="0,67,0,0"
+                  Width="990">
+
+				<Grid>
+					<TextBlock
+						FontSize="22" Foreground="GhostWhite" FontWeight="DemiBold" FontFamily="Monserrat"
+						Grid.RowSpan="2" HorizontalAlignment="Center"
+						VerticalAlignment="Center" Text="{Binding ChattingText}"/>
+
+					<Border VerticalAlignment="Top" Grid.Column="0"
+							Margin="0" Grid.Row="0" Height="70" Background="#02016E">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+
+							<Button Grid.RowSpan="2" Content="{Binding ChatModelHickname, Mode=TwoWay}" FontWeight="DemiBold" HorizontalAlignment="Left"
+									   Margin="35,0,0,0" VerticalAlignment="Center" FontSize="20" FontFamily="Monserrat"
+									   Cursor="Hand" CornerRadius="15" Padding="0"
+									Background="Transparent" Foreground="GhostWhite"
+							        Command="{Binding CheckSelectedProfileCommand}"
+									Name="SelectedContactName"/>
+						</Grid>
+					</Border>
+
+					<Grid Margin="0,75,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Transparent" Width="990" Height="483">
+						
+									<ScrollViewer  Name="MessagesScrollViewer">
+										
+										<ListBox DataContext="{Binding}" ItemsSource="{Binding History}" SelectionMode="Single" Foreground="Transparent" SelectedItem="{Binding Message, Mode=TwoWay}" Background="Transparent" Name="MessageHistoryControl">
+											<Interaction.Behaviors>
+												<behaviors:ScrollToEndBehavior />
+											</Interaction.Behaviors>
+											<ListBox.ItemTemplate>
+												<DataTemplate>
+													<StackPanel ContextMenu="{StaticResource ContextMessageMenu}" PointerPressed="StackPanel_PointerPressed" Orientation="Vertical" Background="Transparent" Margin="5">
+
+														<DockPanel>
+
+															<StackPanel Orientation="Horizontal" Background="Transparent">
+																<Border Background="DodgerBlue" Margin="0,0,0,0" BorderBrush="AliceBlue" BorderThickness="3" MaxWidth="550" MinWidth="300" HorizontalAlignment="" CornerRadius="25">
+
+																	<StackPanel Margin="5" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+																	<Grid>
+																	<Grid.ColumnDefinitions>
+																		<ColumnDefinition Width="Auto"/>
+																		<ColumnDefinition Width="*"/>
+																	</Grid.ColumnDefinitions>
+
+																	<TextBlock Grid.Column="0" Margin="10,0,0,0" TextWrapping="Wrap" FontWeight="Bold"
+																			   
+																			    Foreground="#02021E" Text="{Binding MessageFrom, Mode=TwoWay}" FontSize="22"
+																					   VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+																	<TextBlock Grid.Column="1" Margin="0,0,15,0" Foreground="Black" 
+																			   VerticalAlignment="Top" HorizontalAlignment="Right"
+																		     Text="{Binding SendingDateTime, Mode=TwoWay}" FontSize="15" FontWeight="Normal"
+																				   />
+																		
+																		
+																</Grid>
+
+																		<TextBlock Margin="25" TextWrapping="Wrap" Foreground="Black" Text="{Binding MessageData, Mode=TwoWay}" FontSize="20" FontWeight="DemiBold"
+																							   VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+																<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+																	<TextBlock Margin="10" Foreground="Black" Text="{Binding IsEdited, Mode=TwoWay}" FontSize="15" FontWeight="Normal"
+																			   VerticalAlignment="Center"/>
+																</StackPanel>
+																</StackPanel>
+																	</Border>
+																
+															</StackPanel>
+															
+														</DockPanel>
+
+													</StackPanel>
+												</DataTemplate>
+											</ListBox.ItemTemplate>
+											
+										</ListBox>
+									</ScrollViewer>
+					</Grid>
+
+
+					<Border Grid.Row="1" Grid.Column="1" Margin="0,15" MaxHeight="131" VerticalAlignment="Bottom" Background="Transparent">
+						<Grid VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent">
+							<TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Width="995"
+									 FontSize="20"
+									 TextWrapping="Wrap"
+									 MaxHeight="131" Height="131"
+									 Background="GhostWhite"
+									 HorizontalContentAlignment="Left"
+									 Name="MessageTextBox"
+									 Text="{Binding ChatMessage}"
+									 HorizontalAlignment="Left"
+									 Padding="10,10,80,10"
+                     >
+							</TextBox>
+
+							<Button Background="#020278" Content="≫" Foreground="WhiteSmoke" HorizontalAlignment="Right"
+									Height="40"
+									FontSize="31"
+									Padding="0"
+									Margin="0,0,20,0"
+									Width="50" HorizontalContentAlignment="Center"
+									VerticalContentAlignment="Center" VerticalAlignment="Center"
+									Name="SendMessageButton"
+									Command="{Binding SendMessageCommand}"
+									CornerRadius="12"
+                        ></Button>
+						</Grid>
+					</Border>
+				</Grid>
+				
+			</Grid>
+			</Grid>
+		</Border>
+  
+</UserControl>

@@ -1,0 +1,180 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Dexma_cpt_ClientSide.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Dexma_cpt_ClientSide.Views.RegistrationView"
+             x:DataType="vm:RegistrationViewModel">
+
+	<UserControl.Styles>
+		<StyleInclude Source="../Styles/MainStyles.axaml"/>
+	</UserControl.Styles>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="60"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" FontFamily="Montserrat"
+				   FontSize="28" Foreground="#91A3F9"
+				   HorizontalAlignment="Center"
+				   VerticalAlignment="Bottom"
+				   Margin="0,10"
+				   TextAlignment="Center">
+			<Run Foreground="#F0F8FF" FontWeight="DemiBold">«Deus ex machina»:</Run>
+			<Run>where you are</Run>
+			<Run Foreground="#F0F8FF" FontWeight="DemiBold">privacy comes first</Run>
+		</TextBlock>
+
+		<Border Grid.Row="1" CornerRadius="40">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Grid Grid.Column="0" Width="380" Height="650"
+					  Grid.ColumnSpan="2" HorizontalAlignment="Center"
+					  VerticalAlignment="Center">
+
+					<Border BorderThickness="4" BorderBrush="#F0F8FF" CornerRadius="50" Background="#000080">
+
+						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+							<TextBlock FontWeight="Bold" HorizontalAlignment="Center" FontSize="26"
+									   Foreground="#F0F8FF" Margin="0 40 0 20" FontFamily="Montserrat" Text="Registration"
+                                       />
+
+							<StackPanel Margin="0 5">
+								<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+									   FontSize="18" Foreground="#F0F8FF" Width="100"
+									   Content="Username:" Margin="60,0,0,0"/>
+								<MaskedTextBox MaxLength="40" TabIndex="1" CornerRadius="15" x:Name="TextBoxUsername"
+										 Text="{Binding UserName, Mode=TwoWay}"
+										 Width="250" Height="40"
+										 HorizontalContentAlignment="Left"
+										 VerticalContentAlignment="Center"
+										 FontFamily="Montserrat"
+										 FontWeight="DemiBold"
+										 Foreground="#02021E"
+										 Background="#F0F8FF" BorderThickness="3" BorderBrush="DodgerBlue"/>
+							</StackPanel>
+
+							<StackPanel Margin="0 5">
+								<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+									   FontSize="18" Foreground="#F0F8FF" Width="100"
+									   Content="Nickname:" Margin="60,0,0,0"/>
+								<TextBox TabIndex="1" CornerRadius="15" x:Name="TextBoxNickname"
+										 Width="250" Height="40"
+										 HorizontalContentAlignment="Left"
+										 VerticalContentAlignment="Center"
+										 FontFamily="Montserrat"
+										 FontWeight="DemiBold"
+										 Foreground="#02021E"
+										 Background="#F0F8FF" BorderThickness="3"
+										 BorderBrush="DodgerBlue"
+										 
+									 Text="{Binding Nickname, Mode=TwoWay}"/>
+							</StackPanel>
+
+							<StackPanel Margin="0 5">
+								<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+									   FontSize="18" Foreground="#F0F8FF" Width="100"
+									   Content="Phone:" Margin="60,0,0,0"/>
+								<MaskedTextBox Mask="(+7) (000) 000-00-00" TabIndex="1" CornerRadius="15" x:Name="TextBoxPhone"
+										 Width="250" Height="40"
+										 HorizontalContentAlignment="Left"
+										 VerticalContentAlignment="Center"
+										 FontFamily="Montserrat"
+										 FontWeight="DemiBold"
+										 Foreground="#02021E"
+									 Text="{Binding Phone, Mode=TwoWay}"
+										 Background="#F0F8FF" BorderThickness="3" BorderBrush="DodgerBlue"/>
+							</StackPanel>
+
+							<StackPanel Margin="0 5">
+								<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+									   FontSize="18" Foreground="#F0F8FF" Width="100"
+									   Content="Password:" Margin="60,0,0,0"/>
+								<TextBox TabIndex="2" CornerRadius="15"
+										 Background="#F0F8FF"
+										 Foreground="#02021E"
+										 PasswordChar="*"
+										 Text="{Binding Password, Mode=TwoWay}"
+										 x:Name="TextBoxPassword" Width="250" Height="40"
+										 HorizontalContentAlignment="Left"
+										 VerticalContentAlignment="Center"
+									 FontFamily="Montserrat"
+										 FontWeight="DemiBold" BorderBrush="DodgerBlue" BorderThickness="3">
+								</TextBox>
+							</StackPanel>
+
+							<StackPanel Margin="0 5">
+								<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+									   FontSize="18" Foreground="#F0F8FF" Width="150"
+									   Content="Return password:" Margin="60,0,0,0"/>
+								<TextBox TabIndex="2" CornerRadius="15"
+										 Background="#F0F8FF"
+										 Foreground="#02021E"
+										 PasswordChar="*"
+										 Text="{Binding ReturnPassword, Mode=TwoWay}"
+										 x:Name="TextBoxReturnPassword" Width="250" Height="40"
+										 HorizontalContentAlignment="Left"
+										 VerticalContentAlignment="Center"
+										 FontFamily="Montserrat"
+										 FontWeight="DemiBold" BorderBrush="DodgerBlue" BorderThickness="3" />
+							</StackPanel>
+
+							<StackPanel Margin="0 5">
+								<TextBlock Text="{Binding ErrorCheck}" Foreground="Red" IsVisible="True"
+										   Background="Transparent" x:Name="TextBoxErrorCheck"
+										   Width="350" Height="25" />
+							</StackPanel>
+
+							<StackPanel HorizontalAlignment="Center">
+								<Button
+									TabIndex="3"
+									Name="ButtonSignUp"
+										Content="Sign Up"
+										Classes="ButtonBase"
+										Width="110"
+										Height="35"
+										CornerRadius="20"
+										Margin="0,8"
+										Background="#0202A3"
+										FontWeight="Bold"
+										FontSize="18"
+										BorderBrush="DodgerBlue"
+										BorderThickness="2"
+									Command="{Binding RegistrationCommand}"
+                                >
+								</Button>
+
+								<Button TabIndex="4"
+									Name="ButtonToSignIn"
+										Content="Sign In"
+										Classes="ButtonBase"
+										Width="110"
+										Height="35"
+										CornerRadius="20"
+										Margin="0,8"
+										FontWeight="Bold"
+										FontSize="18"
+										Background="#020278"
+										BorderBrush="DodgerBlue"
+										BorderThickness="2"
+										Command="{Binding GoToAuthorization}"
+                                >
+								</Button>
+							</StackPanel>
+
+						</StackPanel>
+					</Border>
+				</Grid>
+			</Grid>
+
+		</Border>
+	</Grid>
+
+</UserControl>

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dexma_cpt_DBLibrary
 {
     public class InternalKey
     {
-        public required int InternalKeyId { get; set; }
-        public required byte[] InternalKeyData { get; set; }
-        public required int UserKeyId { get; set; }
-        public required UserKey UserKey { get; set; }
+        [Key]
+        public int InternalKeyId { get; set; }
+        public byte[] InternalKeyData { get; set; }
+        public int UserKeyId { get; set; }
+        public UserKey UserKey { get; set; }
         public ICollection<UserRelation> UserRelationsTo { get; } = new List<UserRelation>();
         public ICollection<UserRelation> UserRelationsFrom { get; } = new List<UserRelation>();
         public InternalKey() { }

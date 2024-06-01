@@ -1,0 +1,235 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Dexma_cpt_ClientSide.ViewModels"
+        xmlns:views="clr-namespace:Dexma_cpt_ClientSide.Views"	
+		mc:Ignorable="d" Width="380" Height="770" CanResize="False"
+        x:Class="Dexma_cpt_ClientSide.Views.ProfileWindow"
+		Background="Transparent" TransparencyBackgroundFallback="Transparent"
+        Title="ProfileWindow"
+		WindowStartupLocation="CenterScreen" SystemDecorations="None"
+		x:DataType="vm:ProfileViewModel">
+
+	<Border Grid.Row="1" CornerRadius="40">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Grid Grid.Column="0" Width="380" Height="770"
+				  Grid.ColumnSpan="2" HorizontalAlignment="Center"
+				  VerticalAlignment="Center">
+
+
+				<Border BorderThickness="4" BorderBrush="#F0F8FF" CornerRadius="50" Background="#000080">
+
+					<StackPanel Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center">
+						<Button TabIndex="1"
+								Name="ButtonExit"
+									Content="✖︎"
+									Width="30"
+									Height="25"
+									CornerRadius="10"
+									FontWeight="Bold"
+									FontSize="8"
+									Background="White"
+								    Foreground="#020278"
+									BorderBrush="DodgerBlue"
+									HorizontalAlignment="Left"
+								HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Margin="300,0,0,0"
+									BorderThickness="2"
+								Command="{Binding CloseWindowCommand}"
+								
+									/>
+						<Button TabIndex="1"
+									Content="Exit"
+									Width="50"
+									Height="25"
+									CornerRadius="10"
+									FontWeight="Bold"
+									FontSize="11"
+									Background="White"
+								    Foreground="Red"
+									BorderBrush="DodgerBlue"
+									HorizontalAlignment="Left"
+								HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Margin="0,-30,0,0"
+									BorderThickness="2"
+								Command="{Binding ExitCommand}"
+									/>
+
+						<Border Grid.ColumnSpan="3"
+                    VerticalAlignment="Top"
+                    Grid.Row="0"
+                    Margin="0"
+                    Background="Transparent">
+
+							<Grid>
+								<Grid HorizontalAlignment="Center">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition Width="Auto"/>
+									</Grid.ColumnDefinitions>
+
+
+									<Ellipse Grid.Column="1"
+											 Name="EllipseInner"
+											 Width="90"
+											 Height="90"
+											 StrokeThickness="3"
+											 Stroke="#020278"
+											 Stretch="Uniform"/>
+
+									<TextBlock FontSize="45" FontWeight="ExtraBold" Text="{Binding FirstNicknameChar}"
+											   Grid.Row="0" Grid.Column="1" Foreground="#F0F8FF"
+											   VerticalAlignment="Center" HorizontalAlignment="Center"
+                               />
+
+								</Grid>
+							</Grid>
+						</Border>
+
+						<StackPanel Margin="0 7">
+							<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+								   FontSize="18" Foreground="#F0F8FF" Width="100"
+								   Content="Username:" Margin="45,0,0,0"/>
+							<TextBox TabIndex="1" CornerRadius="15" x:Name="TextBoxUsername"
+									 Width="250" Height="40"
+									 Text="{Binding UserName, Mode=TwoWay}"
+									 HorizontalContentAlignment="Left"
+									 VerticalContentAlignment="Center"
+									 FontFamily="Montserrat"
+									 FontWeight="DemiBold"
+									 Foreground="#02021E"
+									 Background="#F0F8FF" BorderThickness="3" BorderBrush="DodgerBlue"/>
+						</StackPanel>
+
+						<StackPanel Margin="0 7">
+							<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+								   FontSize="18" Foreground="#F0F8FF" Width="100"
+								   Content="Nickname:" Margin="45,0,0,0"/>
+							<TextBox TabIndex="1" CornerRadius="15" x:Name="TextBoxHickname"
+									 Width="250" Height="40"
+									 Text="{Binding Nickname, Mode=TwoWay}"
+									 HorizontalContentAlignment="Left"
+									 VerticalContentAlignment="Center"
+									 FontFamily="Montserrat"
+									 FontWeight="DemiBold"
+									 Foreground="#02021E"
+									 Background="#F0F8FF" BorderThickness="3" BorderBrush="DodgerBlue"/>
+						</StackPanel>
+
+						<StackPanel Margin="0 7">
+							<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+								   FontSize="18" Foreground="#F0F8FF" Width="100"
+								   Content="Phone:" Margin="45,0,0,0"/>
+							<TextBox TabIndex="1" CornerRadius="15" x:Name="TextBoxPhone"
+									 Width="250" Height="40"
+									 IsReadOnly="True"
+									 IsVisible="True"
+									 
+									 Text="{Binding Phone, Mode=TwoWay}"
+									 HorizontalContentAlignment="Left"
+									 VerticalContentAlignment="Center"
+									 FontFamily="Montserrat"
+									 FontWeight="DemiBold"
+									 Foreground="#02021E"
+									 Background="#F0F8FF" BorderThickness="3" BorderBrush="DodgerBlue"/>
+						</StackPanel>
+
+						<StackPanel Margin="0 7">
+							<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+								   FontSize="18" Foreground="#F0F8FF" Width="120"
+								   Content="Old password:" Margin="45,0,0,0"/>
+							<TextBox TabIndex="2" CornerRadius="15"
+									 Background="#F0F8FF"
+									 Foreground="#02021E"
+									 PasswordChar="*"
+									 Text="{Binding Password}"
+									 x:Name="TextBoxPassword" Width="250" Height="40"
+									 HorizontalContentAlignment="Left"
+									 VerticalContentAlignment="Center"
+								 FontFamily="Montserrat"
+									 FontWeight="DemiBold" BorderBrush="DodgerBlue" BorderThickness="3" />
+						</StackPanel>
+
+						<StackPanel Margin="0 7">
+							<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="DemiBold"
+								   FontSize="18" Foreground="#F0F8FF" Width="130"
+								   Content="New password:" Margin="45,0,0,0"/>
+							<TextBox TabIndex="2" CornerRadius="15"
+									 Background="#F0F8FF"
+									 Foreground="#02021E"
+									 PasswordChar="*"
+									 Text="{Binding ReturnPassword}"
+									 x:Name="TextBoxNewPassword" Width="250" Height="40"
+									 HorizontalContentAlignment="Left"
+									 VerticalContentAlignment="Center"
+								 FontFamily="Montserrat"
+									 FontWeight="DemiBold" BorderBrush="DodgerBlue" BorderThickness="3" />
+						</StackPanel>
+
+						<StackPanel Margin="0 5">
+							<TextBlock Text="{Binding ErrorCheck}" Background="Transparent" x:Name="TextBoxErrorCheck" Width="200" Height="25" />
+						</StackPanel>
+
+						<StackPanel HorizontalAlignment="Center">
+							<Button
+								TabIndex="3"
+								Name="ButtonSaveChanges"
+									Content="Save"
+									Classes="ButtonBase"
+									Width="110"
+									Height="35"
+									CornerRadius="20"
+									Margin="0,0,0,10"
+									Background="#0202A3"
+									FontWeight="Bold"
+									FontSize="18"
+									BorderBrush="DodgerBlue"
+									BorderThickness="2"
+									Foreground="#F0F8FF"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								HorizontalContentAlignment="Center"
+								Cursor="Hand"
+								Command="{Binding SaveChangesCommand}"
+                                >
+							</Button>
+
+							<Button TabIndex="4"
+								Name="ButtonDeleteProfile"
+									Content="Delete profile"
+									Classes="ButtonBase"
+									Width="140"
+									Opacity="0.8"
+									Height="35"
+									CornerRadius="20"
+									Margin="5"
+									FontWeight="Bold"
+									FontSize="18"
+									Background="#F0F8FF"
+									BorderBrush="DodgerBlue"
+									BorderThickness="2"
+									Foreground="Red"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								HorizontalContentAlignment="Center"
+								Cursor="Hand"
+									Command="{Binding RemoveProfileCommand}"
+									/>
+						</StackPanel>
+
+					</StackPanel>
+				</Border>
+			</Grid>
+		</Grid>
+
+	</Border>
+	
+</Window>

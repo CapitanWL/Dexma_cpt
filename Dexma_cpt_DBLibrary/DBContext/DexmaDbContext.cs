@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dexma_cpt_EncryptLibrary;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Text;
 
 namespace Dexma_cpt_DBLibrary
 {
@@ -22,12 +24,17 @@ namespace Dexma_cpt_DBLibrary
             }
         }
 
-        public DexmaDbContext()
+        public DexmaDbContext(DbContextOptions<DexmaDbContext> options)
+        : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
-            Database.Migrate();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
+            //Database.Migrate();
         }
+
+        //public DexmaDbContext()
+        //{
+       // }
 
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Message> Messages { get; set; } = null!;
@@ -39,10 +46,9 @@ namespace Dexma_cpt_DBLibrary
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // User
-
             modelBuilder.Entity<User>()
-                .Property(u => u.UserId)
-                .UseIdentityColumn();
+       .Property(u => u.UserId)
+       .UseIdentityAlwaysColumn();
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserKey)
@@ -52,10 +58,9 @@ namespace Dexma_cpt_DBLibrary
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Relation
-
             modelBuilder.Entity<UserRelation>()
-                .Property(r => r.UserRelationId)
-                .UseIdentityColumn();
+            .Property(u => u.UserRelationId)
+            .UseIdentityAlwaysColumn();
 
             modelBuilder.Entity<UserRelation>()
                 .HasMany(r => r.Messages)
@@ -66,8 +71,9 @@ namespace Dexma_cpt_DBLibrary
             // RType
 
             modelBuilder.Entity<RelationType>()
-                .Property(r => r.RelationTypeId)
-                .UseIdentityColumn();
+            .Property(u => u.RelationTypeId)
+            .UseIdentityAlwaysColumn()
+       ;
 
             modelBuilder.Entity<RelationType>()
                 .HasMany(r => r.UserRelations)
@@ -79,21 +85,21 @@ namespace Dexma_cpt_DBLibrary
             // Key
 
             modelBuilder.Entity<UserKey>()
-                .Property(u => u.UserKeyId)
-                .UseIdentityColumn();
+                 .Property(u => u.UserKeyId)
+                 .UseIdentityAlwaysColumn();
 
             modelBuilder.Entity<UserKey>()
                 .HasOne(u => u.InternalKey)
                 .WithOne(u => u.UserKey)
-                .HasForeignKey<UserKey>(fk => fk.UserKeyId)
+                .HasForeignKey<InternalKey>(fk => fk.UserKeyId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Internal key
 
             modelBuilder.Entity<InternalKey>()
-                .Property(u => u.InternalKeyId)
-                .UseIdentityColumn();
+    .Property(u => u.InternalKeyId)
+    .UseIdentityAlwaysColumn();
 
             modelBuilder.Entity<InternalKey>()
                 .HasMany(u => u.UserRelationsFrom)
@@ -106,40 +112,52 @@ namespace Dexma_cpt_DBLibrary
                 .WithOne(r => r.InternalTo)
                 .HasForeignKey(r => r.InternalToId)
                 .OnDelete(DeleteBehavior.Cascade);
+
         }
 
-        /*
-        public async Task AddUser(string username, string phone, string nickname, bool status)
+        #region help for me :))
+
+        public async Task AddUser(string username, string phone, string nickname, bool status, string password)
         {
-            User newUser = new User()
+
+            User newUser = new()
             {
+                Username = username,
                 Nickname = nickname,
-                UserName = username,
                 Phone = phone,
+                AccountStatus = status
             };
 
-            Users.Add(newUser);
+            await Users.AddAsync(newUser);
             await SaveChangesAsync();
-        }
 
-        public async Task AddUserKey(int userId, string password)
-        {
-            byte[] saltBytes = PBKDF.GenerateSalt();
+            var searchUser = await Users.FirstOrDefaultAsync(u => u.Username == username);
 
-            UserKey newUserKey = new UserKey()
+            byte[] saltBytes = BaseGenerator.SaltGenerator();
+
+            UserKey newUserKey = new (Pbkdf.PbkdfCreate(password, saltBytes),
+                saltBytes, searchUser.UserId);
+
+            await UsersKey.AddAsync(newUserKey);
+            await SaveChangesAsync();
+
+            var searchKey = await UsersKey.FirstOrDefaultAsync(uk => uk.UserId == searchUser.UserId);
+
+            InternalKey newInternalKey = new()
             {
-                Password = PBKDF.Pbkdf2(password, saltBytes, 10000, HashAlgorithmName.SHA512, 64),
-                PasswordSalt = saltBytes,
-                UserId = userId
+                InternalKeyData =
+                Pbkdf.PbkdfCreate(BaseGenerator.GenerateRandomString(),
+                BaseGenerator.SaltGenerator()),
+                UserKeyId = searchKey.UserKeyId
             };
 
-            UsersKey.Add(newUserKey);
+            await InternalKeys.AddAsync(newInternalKey);
             await SaveChangesAsync();
         }
 
         public async Task AddRelationType(string name)
         {
-            RelationType newRelationType = new RelationType()
+            RelationType newRelationType = new()
             {
                 RelationName = name
             };
@@ -148,38 +166,33 @@ namespace Dexma_cpt_DBLibrary
             await SaveChangesAsync();
         }
 
-        public async Task AddRelation(int reltypeid, int userfrom, int userto)
+        public async Task AddRelation(int reltypeid, int internalfrom, int internalto)
         {
-            Relation newRelation = new Relation()
+            UserRelation newRelation = new()
             {
                 RelationTypeId = reltypeid,
-                UserFromId = userfrom,
-                UserToId = userto
+                InternalFromId = internalfrom,
+                InternalToId = internalto
             };
 
-            Relations.Add(newRelation);
+            await UserRelations.AddAsync(newRelation);
             await SaveChangesAsync();
         }
 
-        public async Task AddMessage(int relation, string data, bool status, DateTime messageDateTime)
+        /*public async Task AddMessage(int userrelation, string data, DateTime messageDateTime)
         {
-            var currentrelation = Relations.FirstOrDefault(r => r.RelationId == relation);
-
-            var currentUser = Users.FirstOrDefault(u => u.UserId == currentrelation.UserFromId);
-
-            var currentKey = UsersKey.FirstOrDefault(uk => uk.UserId == currentUser.UserId);
-
-            Message newMessage = new Message()
+            Message newMessage = new()
             {
-                RelationId = relation,
+                UserRelationId = userrelation,
                 MessageData = Encoding.UTF8.GetBytes(data),
-                MessageDT = messageDateTime,
+                SendingDateTime = messageDateTime,
+                IsDeleted = false,
             };
 
             Messages.Add(newMessage);
             await SaveChangesAsync();
-        }
+        }*/
 
-        */
+        #endregion
     }
 }

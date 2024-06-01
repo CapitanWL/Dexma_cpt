@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dexma_cpt_DBLibrary
 {
     public class Message
     {
-        public required int MessageId { get; set; }
-        public int? UserRelationId { get; set; }
-        public required byte[] MessageData { get; set; }
-        public required DateTime SendingDateTime { get; set; }
-        public required bool IsDeleted { get; set; }
-        public UserRelation? UserRelation { get; set; }
+        [Key]
+        
+        public int MessageId { get; set; }
+        public int UserRelationId { get; set; }
+        public byte[] MessageData { get; set; }
+        public DateTime SendingDateTime { get; set; }
+        public bool IsEdited { get; set; }
+        public byte[] MessageIV {  get; set; }
+        public UserRelation UserRelation { get; set; }
         public Message() { }
     }
 }

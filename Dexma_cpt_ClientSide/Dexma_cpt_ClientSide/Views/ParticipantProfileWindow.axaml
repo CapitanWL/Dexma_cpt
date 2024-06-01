@@ -1,0 +1,139 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="380" Height="520" CanResize="False"
+		Background="Transparent" TransparencyBackgroundFallback="Transparent"
+        xmlns:vm="clr-namespace:Dexma_cpt_ClientSide.ViewModels"
+        xmlns:views="clr-namespace:Dexma_cpt_ClientSide.Views"
+		x:Class="Dexma_cpt_ClientSide.Views.ParticipantProfileWindow"
+        Title="ParticipantProfileWindow"
+		WindowStartupLocation="CenterScreen" SystemDecorations="None"
+		x:DataType="vm:ParticipantProfileViewModel">
+	<Border Grid.Row="1" CornerRadius="40">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Grid Grid.Column="0" Height="520"
+				  Grid.ColumnSpan="2" HorizontalAlignment="Center"
+				  VerticalAlignment="Center">
+
+
+				<Border BorderThickness="4" BorderBrush="#F0F8FF" CornerRadius="50" Background="#000080">
+
+					<StackPanel Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center">
+						
+
+						<TextBlock FontWeight="Bold" HorizontalAlignment="Center" FontSize="26"
+								   Foreground="#F0F8FF" Margin="0 0 0 20" FontFamily="Montserrat" Text=""
+                                       />
+
+						<Border Grid.ColumnSpan="3"
+                    VerticalAlignment="Top"
+                    Grid.Row="0"
+                    Margin="0"
+                    Background="Transparent">
+
+							<Grid>
+								<Grid HorizontalAlignment="Center">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition Width="Auto"/>
+									</Grid.ColumnDefinitions>
+
+
+									<Ellipse Grid.Column="1"
+											 Name="EllipseInner"
+											 Width="90"
+											 Height="90"
+											 StrokeThickness="3"
+											 Stroke="#020278"
+											 Stretch="Uniform"/>
+
+									<TextBlock FontSize="45" FontWeight="ExtraBold"
+											   Grid.Row="0" Grid.Column="1" Foreground="#F0F8FF"
+											   VerticalAlignment="Center" Text="{Binding FirstNicknameChar}"
+											   HorizontalAlignment="Center"
+                               />
+
+								</Grid>
+							</Grid>
+						</Border>
+
+						<StackPanel Margin="0 7">
+							<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="Bold"
+								   FontSize="18" Foreground="#F0F8FF" Width="100"
+								   Content="Username:" Margin="44,10,0,5"/>
+							<TextBlock
+									 Width="255" Height="40"
+									 Background="Transparent"
+									 FontFamily="Montserrat"
+									 FontWeight="DemiBold"
+								     Text="{Binding UserName}"
+									 Foreground="#F0F8FF"
+									 />
+						</StackPanel>
+
+						<StackPanel Margin="0 3">
+							<Label HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="Bold"
+								   FontSize="18" Foreground="#F0F8FF" Width="100"
+								   Content="Nickname:" Margin="44,10,0,5"/>
+							<TextBlock
+									 Width="255" Height="40"
+									 Background="Transparent"
+									 FontFamily="Montserrat"
+									 FontWeight="DemiBold"
+								     Text="{Binding Nickname}"
+									 Foreground="#F0F8FF"
+									 />
+						</StackPanel>
+
+						<StackPanel HorizontalAlignment="Center" Margin="0 3">
+				
+							<TextBlock
+									 Width="255" Height="40"
+									 Background="Transparent"
+									 FontFamily="Montserrat"
+									 FontWeight="DemiBold"
+									 FontSize="30"
+								     Text="{Binding AccountStatus}"
+									 Foreground="Red"
+									 Margin="150,5,0,0"
+									 HorizontalAlignment="Center"
+									
+									 />
+						
+						</StackPanel>
+
+						<StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" Orientation="Horizontal">
+
+							<Button
+														Content="Ok"
+														Width="100"
+														Height="50"
+														CornerRadius="20"
+														Margin="0,0,0,0"
+														FontWeight="Bold"
+														FontSize="20"
+														Background="#020278"
+														BorderBrush="GhostWhite"
+														BorderThickness="2"
+														Foreground="GhostWhite"
+													HorizontalAlignment="Right"
+													VerticalAlignment="Center"
+													HorizontalContentAlignment="Center"
+														VerticalContentAlignment="Center"
+													Cursor="Hand"
+									Command="{Binding CloseWindowCommand}"
+									/>
+						</StackPanel>
+					</StackPanel>
+				</Border>
+			</Grid>
+		</Grid>
+
+	</Border>
+</Window>

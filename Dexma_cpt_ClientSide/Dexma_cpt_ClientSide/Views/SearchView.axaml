@@ -1,0 +1,151 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+			 xmlns:avalonia="clr-namespace:Avalonia;assembly=Avalonia"
+             x:Class="Dexma_cpt_ClientSide.Views.SearchView"
+			 xmlns:views="clr-namespace:Dexma_cpt_ClientSide.Views"
+             xmlns:vm="clr-namespace:Dexma_cpt_ClientSide.ViewModels"
+             x:DataType="vm:HomeViewModel"
+			 >
+	<UserControl.Styles>
+		<StyleInclude Source="../Styles/MainStyles.axaml"/>
+	</UserControl.Styles>
+
+		<Grid Margin="0,0,0,0" Background="#02016E">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition Width="40" />
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+
+			<TextBox
+				Grid.Column="0"
+				Height="50"
+				FontSize="16"
+				VerticalContentAlignment="Center"
+				Width="260"
+				Margin="20,10"
+				Padding="10,0,65,0"
+				CornerRadius="15"
+				HorizontalContentAlignment="Left"
+				FontFamily="Montserrat"
+				FontWeight="DemiBold"
+				Foreground="#02021E"
+				Background="#F0F8FF"
+				BorderThickness="3"
+				BorderBrush="DodgerBlue"
+				Name="SearchTextBox"
+				Watermark="Search chat..."
+				UseFloatingWatermark="False"
+		Text="{Binding SearchUsername, Mode=TwoWay}"
+			>
+			</TextBox>
+
+			<Button TabIndex="1"
+									Content="🔎"
+					FontFamily="Montserrat"
+									Width="25"
+									Height="25"
+									Padding="0"
+									CornerRadius="15"
+									FontWeight="Bold"
+									FontSize="16"
+									Background="Transparent"
+								    Foreground="#020278"
+									BorderBrush="DodgerBlue"
+									HorizontalAlignment="Right"
+								HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Margin="0,3,60,0"
+									BorderThickness="2"
+								Command="{Binding GetSearchResultCommand}"
+									/>
+			<Button TabIndex="1"
+								Name="ButtonExit"
+									Content="✖"
+					FontFamily="Montserrat"
+									Width="25"
+									Height="25"
+									Padding="0"
+									CornerRadius="25"
+									FontWeight="Bold"
+									FontSize="16"
+									Background="Transparent"
+								    Foreground="#020278"
+									BorderBrush="DodgerBlue"
+									HorizontalAlignment="Right"
+								HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Margin="0,3,30,0"
+									BorderThickness="2"
+								Command="{Binding CloseSearchResultCommand}"
+									/>
+
+			<ListBox ItemsSource="{Binding Chats, Mode=TwoWay}" ScrollViewer.VerticalScrollBarVisibility="Auto"
+					 Background="#020150"
+					 Name="ListBoxCurrentChats"
+				 SelectedItem="{Binding SelectedChat, Mode=TwoWay}"
+					Height="635"
+					 Grid.Row="2" Grid.ColumnSpan="4" SelectionMode="Single">
+				
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Margin="0,3" Orientation="Vertical" HorizontalAlignment="Left"
+									VerticalAlignment="Center" Background="#02016E">
+							<DockPanel>
+								<Grid DockPanel.Dock="Left">
+									<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+										<StackPanel Orientation="Horizontal">
+
+											<Border Background="Transparent">
+												<Grid>
+													<Grid HorizontalAlignment="Right">
+														<Grid.ColumnDefinitions>
+															<ColumnDefinition Width="Auto"/>
+															<ColumnDefinition Width="Auto"/>
+														</Grid.ColumnDefinitions>
+
+														<Button CornerRadius="35" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" Margin="10,0">
+															<Ellipse Stretch="Uniform" Width="30" Height="30" StrokeThickness="1" Stroke="#F0F8FF" StrokeDashArray="5" StrokeLineCap="Round"/>
+														</Button>
+
+														<Ellipse Grid.Column="1" Width="40" Height="40" StrokeThickness="3" Stroke="#020278" Stretch="Uniform"/>
+
+														<TextBlock FontFamily="Montserrat" Text="{Binding FirstUsernameChar, Mode=TwoWay}" Foreground="#02021E" FontSize="16" FontWeight="DemiBold" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+													</Grid>
+												</Grid>
+											</Border>
+
+											<StackPanel Orientation="Vertical">
+
+												<TextBlock Foreground="GhostWhite" FontFamily="Montserrat" Text="{Binding Nickname, Mode=TwoWay}" FontSize="20" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+												<TextBlock Foreground="GhostWhite" FontFamily="Montserrat" Text="{Binding Username, Mode=TwoWay}" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+
+											</StackPanel>
+
+
+										</StackPanel>
+									</StackPanel>
+								</Grid>
+							</DockPanel>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			
+	</Grid>
+
+</UserControl>
